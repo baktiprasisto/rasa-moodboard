@@ -1,3 +1,5 @@
+document.addEventListener("DOMContentLoaded", function () {
+
 let selectedMood = null;
 let selectedColor = null;
 
@@ -121,14 +123,14 @@ const list = document.getElementById('entries-list');
 const entries = getEntries().slice(0, 5);
 
 if (!entries.length) {
-list.innerHTML = ` <div class="empty-state"> <p>"Belum ada catatan. Mulai hari ini."</p> </div>
-`;
+list.innerHTML = `       <div class="empty-state">         <p>"Belum ada catatan. Mulai hari ini."</p>       </div>
+    `;
 return;
 }
 
-list.innerHTML = entries.map((e, i) => ` <div class="entry-card" style="animation-delay:\${i * 0.06}s"> <div class="entry-dot" style="--mood-color:\${e.color}; background:\${e.color}"></div> <div> <div class="entry-text">${e.note || e.mood}</div> <div class="entry-meta"> <span class="entry-tag">${e.mood}</span>
-${e.tags.map(t => `<span class="entry-tag">${t}</span>`).join('')} <span class="entry-tag">⚡ ${e.energy}/10</span> </div> </div> <div class="entry-energy">${formatDate(e.date)}</div> </div>
-`).join('');
+list.innerHTML = entries.map((e, i) => `    <div class="entry-card" style="animation-delay:${i * 0.06}s">       <div class="entry-dot" style="--mood-color:${e.color}; background:${e.color}"></div>       <div>         <div class="entry-text">${e.note || e.mood}</div>         <div class="entry-meta">           <span class="entry-tag">${e.mood}</span>
+          ${e.tags.map(t =>`<span class="entry-tag">${t}</span>`).join('')}           <span class="entry-tag">⚡ ${e.energy}/10</span>         </div>       </div>       <div class="entry-energy">${formatDate(e.date)}</div>     </div>
+  `).join('');
 }
 
 function formatDate(dateStr) {
@@ -164,3 +166,5 @@ document.getElementById('energy-slider').style.setProperty('--val', '56%');
 
 // First render
 renderAll();
+
+});
