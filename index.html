@@ -1,0 +1,161 @@
+<!doctype html>
+
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rasa — Mood Board Harian</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <nav>
+      <div class="logo">rasa<span>.</span></div>
+      <div class="nav-date" id="nav-date"></div>
+    </nav>
+
+    <main>
+      <div class="hero">
+        <div class="hero-label">Mood board harian</div>
+        <h1>Bagaimana <em>rasa</em>mu<br />hari ini?</h1>
+        <p>
+          Catat suasana hatimu setiap hari dan lihat bagaimana perjalanan
+          emosimu membentuk pola yang indah.
+        </p>
+      </div>
+
+      <!-- MOOD PICKER -->
+
+      <div class="section-title">Pilih mood kamu</div>
+      <div class="mood-grid">
+        <button
+          class="mood-btn"
+          style="--mood-color: #e8c97a"
+          data-mood="Bahagia"
+          data-color="#e8c97a"
+          onclick="selectMood(this)"
+        >
+          <div class="mood-dot"></div>
+          <span class="mood-label">Bahagia</span>
+        </button>
+        <button
+          class="mood-btn"
+          style="--mood-color: #7abfe8"
+          data-mood="Tenang"
+          data-color="#7abfe8"
+          onclick="selectMood(this)"
+        >
+          <div class="mood-dot"></div>
+          <span class="mood-label">Tenang</span>
+        </button>
+        <button
+          class="mood-btn"
+          style="--mood-color: #c87ae8"
+          data-mood="Galau"
+          data-color="#c87ae8"
+          onclick="selectMood(this)"
+        >
+          <div class="mood-dot"></div>
+          <span class="mood-label">Galau</span>
+        </button>
+        <button
+          class="mood-btn"
+          style="--mood-color: #e87a7a"
+          data-mood="Stres"
+          data-color="#e87a7a"
+          onclick="selectMood(this)"
+        >
+          <div class="mood-dot"></div>
+          <span class="mood-label">Stres</span>
+        </button>
+        <button
+          class="mood-btn"
+          style="--mood-color: #7ae89a"
+          data-mood="Semangat"
+          data-color="#7ae89a"
+          onclick="selectMood(this)"
+        >
+          <div class="mood-dot"></div>
+          <span class="mood-label">Semangat</span>
+        </button>
+      </div>
+
+      <!-- NOTE -->
+
+      <div class="input-section">
+        <div class="section-title">Cerita hari ini</div>
+        <textarea
+          class="note-area"
+          id="note-area"
+          placeholder="Hari ini aku merasa..."
+          maxlength="300"
+        ></textarea>
+      </div>
+
+      <!-- TAGS -->
+
+      <div class="section-title">Apa yang mempengaruhi?</div>
+      <div class="tags-row">
+        <span class="tag-chip" onclick="toggleTag(this)">Kerjaan</span>
+        <span class="tag-chip" onclick="toggleTag(this)">Keluarga</span>
+        <span class="tag-chip" onclick="toggleTag(this)">Teman</span>
+        <span class="tag-chip" onclick="toggleTag(this)">Kesehatan</span>
+        <span class="tag-chip" onclick="toggleTag(this)">Cuaca</span>
+        <span class="tag-chip" onclick="toggleTag(this)">Tidur</span>
+        <span class="tag-chip" onclick="toggleTag(this)">Olahraga</span>
+        <span class="tag-chip" onclick="toggleTag(this)">Makanan</span>
+        <span class="tag-chip" onclick="toggleTag(this)">Keuangan</span>
+      </div>
+
+      <!-- ENERGY SLIDER -->
+
+      <div class="slider-section">
+        <div class="section-title">Level energi</div>
+        <div class="slider-row">
+          <input
+            type="range"
+            min="1"
+            max="10"
+            value="6"
+            id="energy-slider"
+            oninput="updateSlider(this)"
+          />
+          <div class="slider-val" id="slider-val">6</div>
+        </div>
+        <div class="slider-labels">
+          <span>Habis</span>
+          <span>Meledak</span>
+        </div>
+      </div>
+
+      <!-- SAVE -->
+
+      <button class="save-btn" onclick="saveEntry()">
+        ✦ Simpan Mood Hari Ini
+      </button>
+
+      <!-- WEEK MAP -->
+
+      <div class="history-section">
+        <div class="history-header">
+          <div class="section-title">Peta minggu ini</div>
+        </div>
+        <div class="week-grid" id="week-grid"></div>
+
+        ```
+        <div class="section-title">Catatan terbaru</div>
+        <div class="entries-list" id="entries-list"></div>
+        ```
+      </div>
+    </main>
+
+    <div class="toast" id="toast">Mood tersimpan ✦</div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
