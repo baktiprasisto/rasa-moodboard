@@ -92,7 +92,7 @@ This project was built to:
 
 ## 📸 Preview
 
-*(You can add screenshot here later)*
+![Preview](assets/preview.png)
 
 ---
 
